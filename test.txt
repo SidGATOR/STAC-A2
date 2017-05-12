@@ -1,0 +1,6 @@
+aoc: Environment checks are completed successfully.
+aoc: Selected target board ProceV_D8
+aoc: Running OpenCL parser....
+aoc: OpenCL parser completed successfully.
+aoc: Compiling for Emulation ....
+aoc: Emulator Compilation completed successfully.

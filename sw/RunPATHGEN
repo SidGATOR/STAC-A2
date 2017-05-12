@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ "$#" -ne 2 ]; then
+	echo "Illegal Number of Arguments"
+	exit
+fi
+cd ../newTest/test/
+echo "Cleaning...."
+rm TimingKernel2.txt PATHGENout* 
+make clean
+echo "Making fresh Applcation..."
+make
+echo "Running the OpenCL Kernel..."
+./alteraPATHGENnew $1 
+echo "Kernel Run Successful..."
+echo "Making Software..."
+cd ../../hw/
+#make clean
+make
+echo "Running Software..."
+./alteraPATHGENnewSW $1 $2
+echo "PATHGEN Completed..."

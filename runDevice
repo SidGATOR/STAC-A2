@@ -1,0 +1,46 @@
+#!/bin/bash
+if [ "$1" == "clean" ]
+then
+	echo "Cleaning..."
+	rm *.o ./alteraPATHGENnew
+	exit
+fi	
+if [ $# -ne 4 ]
+then
+	echo "Less Arguments Passed. ./runDevice  <--c/--nc> <--master/--device>  <board> <Number of paths>"
+	exit
+fi
+if [ ! -f "alteraPATHGENnew" ]
+then
+	echo "##################Making Binaries#####################"
+	
+	make
+fi
+if [ "$1" == "--c" ]
+then
+	 if [ "$2" == "--master" ] 
+	 then
+	 	cd device-master
+	 elif [ "$2" == "--device" ]
+	 then
+	 	cd device
+	fi
+	 rm *.aocx .*aoco
+	 rm -r alteraPATHGEN
+	 echo "###################Compliling Hardware###################"
+	 aoc -v -g --report --fp-relaxed --fpc --board $3 ./alteraPATHGENnew.cl
+	 if [ ! -f "alteraPATHGENnnew.aocx" ]
+	 then
+	 	echo "###########Hardware Generation Failed#################"
+		exit
+	fi
+	 cp ./alteraPATHGENnew.aocx ./alteraPATHGENnew.cl ../
+	 cd ../
+	 ./alteraPATHGENnew $4
+#	 env CL_CONTEXT_EMUALTOR_DEVICE_ALTERA=2 ./alteraPATHGENnew #4
+elif [ "$1" == "--nc" ]
+then
+	./alteraPATHGENnew $4
+#	 env CL_CONTEXT_EMUALTOR_DEVICE_ALTERA=2 ./alteraPATHGENnew #4
+fi
+

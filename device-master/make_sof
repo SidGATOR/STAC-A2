@@ -1,0 +1,4 @@
+#!/bin/bash
+aocl binedit ./alteraPATHGENnew.aocx get .acl.fpga.bin ./alteraPATHGENnew.bin
+aocl binedit ./alteraPATHGENnew.bin get .acl.sof ./alteraPATHGENnew.sof
+quartus_pgmw &

@@ -1,0 +1,8 @@
+To run the kernel we nede to run the script ./runDevice
+"runDevice" takes in 4 arguments
+1. <--c/--nc> Compile Hardware/Use Precompiled Hardware
+2. <--master/--device> There are two design examples. One (Master) is a simple implementation of a single pipeline without the SIMD capabilities the other uses Altera's attribute to use SIMD lanes [__attribute((num_simd_work_items(n))]. Both design options use Altera kernel-to-kernel Channels
+3. <Target board>. Eg for Nallatech 510T p510t_hpc_ax115_sb.
+4. <Number of paths>. Eg 25000
+
+To Clean, run <./runDevice clean>
